@@ -3,6 +3,10 @@ backend:
   phases:
     build:
       commands:
+        - npm ci --production --cache .npm --prefer-offline
+        - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
+    build:
+      commands:
         # --productionフラグを追加してdevDependenciesをスキップ
         - npm ci --production --cache .npm --prefer-offline
         - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
